@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: Acupuncture and Herbal Medicine | Alex Fu, Liverpool, UK
+title: Whispers of Wellness - Opinions on Acupuncture and Herbal Medicine
 
 # Your name to show in the footer
 author: Alex Fu, Dr
@@ -27,7 +27,7 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar-icon.png"
+avatar: "/assets/img/profile.jpeg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
@@ -80,7 +80,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: This website is a blog about my thoughts and experiences on acupuncture and Herbal medicine.
+rss-description: Opinions on Acupuncture and Herbal medicine.
 
 ###########################
 # --- General options --- #
@@ -165,7 +165,7 @@ footer-hover-col: "#0085A1"
 #################################
 
 # Fill in your Google Analytics tag ID (or "Measurement ID") to track your website usage
-#gtag: "G-XXXXXXXXXX"
+gtag: "G-FYZQC13S19"
 
 # Fill in your Cloudflare Analytics beacon token to track your website using Cloudflare Analytics
 #cloudflare_analytics: ""
