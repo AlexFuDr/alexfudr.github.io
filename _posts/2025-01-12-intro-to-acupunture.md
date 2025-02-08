@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Traditional Herbal Medicine
+title: Introduction to Acupuncture for Beginners
 cover-img: /assets/img/path.jpg
 share-img: /assets/img/acup.jpg
 tags: [acupuncture, first session, guide]
