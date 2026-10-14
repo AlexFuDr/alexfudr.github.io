@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  lang="nl"
+  title="Pagina niet gevonden | Page not found"
+  description="De gevraagde pagina kon niet worden gevonden. The requested page could not be found."
+  canonicalPath="/404.html"
+  alternateNl="/nl/"
+  alternateEn="/en/"
+>
+  <section class="not-found shell">
+    <p class="eyebrow">404</p>
+    <h1>Pagina niet gevonden</h1>
+    <p class="lead">De pagina bestaat niet of is verplaatst. <a href="/nl/">Ga naar de Nederlandse startpagina.</a></p>
+    <hr />
+    <h2>Page not found</h2>
+    <p>The page does not exist or has moved. <a href="/en/">Go to the English home page.</a></p>
+  </section>
+</BaseLayout>

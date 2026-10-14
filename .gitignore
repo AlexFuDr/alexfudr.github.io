@@ -1,5 +1,8 @@
 # project
 _site
+dist
+.astro
+node_modules
 .sass-cache
 .vagrant
 
@@ -7,7 +10,5 @@ _site
 .DS_Store
 Thumbs.db
 ehthumbs.db
-
-Gemfile.lock
 
 beautiful-jekyll-theme-*.gem

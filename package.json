@@ -1,0 +1,21 @@
+{
+  "name": "alexfudr-acupuncture-education",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run check && npm run build && npm test"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "latest",
+    "astro": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles", ({ data }) => data.lang === "en" && !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout lang="en" title="Acupuncture education | Alex Fu" description="Evidence-based explanations about acupuncture." canonicalPath="/en/articles/" alternateNl="/nl/artikelen/" alternateEn="/en/articles/">
+  <section class="listing shell">
+    <p class="eyebrow">Education</p>
+    <h1>Research made understandable</h1>
+    <p class="lead">Articles about evidence, safety, and the boundaries of what we know.</p>
+    <div class="article-list">
+      {articles.map((article) => (
+        <a class="article-preview" href={`/en/articles/${article.data.slug}/`}>
+          <span>{article.data.content_type}</span>
+          <h2>{article.data.title}</h2>
+          <p>{article.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

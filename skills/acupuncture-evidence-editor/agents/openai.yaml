@@ -1,0 +1,4 @@
+interface:
+  display_name: "Acupuncture Evidence Editor"
+  short_description: "Evidence-based English and Dutch acupuncture content"
+  default_prompt: "Use $acupuncture-evidence-editor to research and draft a verifiable bilingual acupuncture education article."

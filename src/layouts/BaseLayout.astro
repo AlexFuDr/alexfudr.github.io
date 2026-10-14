@@ -1,0 +1,59 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+import type { Locale } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  alternateNl: string;
+  alternateEn: string;
+  ogType?: "website" | "article";
+}
+
+const { lang, title, description, canonicalPath, alternateNl, alternateEn, ogType = "website" } = Astro.props;
+const site = Astro.site ?? new URL("https://alexfudr.github.io");
+const canonical = new URL(canonicalPath, site);
+const nlUrl = new URL(alternateNl, site);
+const enUrl = new URL(alternateEn, site);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: lang === "nl" ? "Acupunctuur helder uitgelegd" : "Acupuncture, clearly explained",
+  url: new URL(lang === "nl" ? "/nl/" : "/en/", site),
+  inLanguage: lang,
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="nl" href={nlUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={nlUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "nl" ? "nl_NL" : "en_GB"} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">{lang === "nl" ? "Ga naar inhoud" : "Skip to content"}</a>
+    <SiteHeader {lang} alternateNl={alternateNl} alternateEn={alternateEn} />
+    <main id="content">
+      <slot />
+    </main>
+    <SiteFooter {lang} />
+  </body>
+</html>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { Locale } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  alternateNl: string;
+  alternateEn: string;
+  author: string;
+  published: Date;
+  reviewed: Date;
+  certainty: string;
+  conflicts: string;
+}
+
+const { lang, title, description, canonicalPath, alternateNl, alternateEn, author, published, reviewed, certainty, conflicts } = Astro.props;
+const dateFormat = new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", { dateStyle: "long", timeZone: "UTC" });
+const certaintyLabels = {
+  nl: { higher: "Hoger", moderate: "Redelijk", low: "Laag", "very-low": "Zeer laag / onzeker", "not-applicable": "Niet van toepassing" },
+  en: { higher: "Higher", moderate: "Moderate", low: "Low", "very-low": "Very low / uncertain", "not-applicable": "Not applicable" },
+} as const;
+const labels = lang === "nl"
+  ? { reviewed: "Laatst beoordeeld", published: "Gepubliceerd", author: "Auteur", certainty: "Zekerheid", conflicts: "Belangen" }
+  : { reviewed: "Last reviewed", published: "Published", author: "Author", certainty: "Certainty", conflicts: "Conflicts" };
+const site = Astro.site ?? new URL("https://alexfudr.github.io");
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  inLanguage: lang,
+  datePublished: published.toISOString(),
+  dateModified: reviewed.toISOString(),
+  author: { "@type": "Person", name: author },
+  mainEntityOfPage: new URL(canonicalPath, site),
+};
+---
+
+<BaseLayout {lang} {title} {description} {canonicalPath} {alternateNl} {alternateEn} ogType="article">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <article class="article shell">
+    <header class="article-header">
+      <p class="eyebrow">{lang === "nl" ? "Redactionele methode" : "Editorial method"}</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <dl class="article-meta">
+        <div><dt>{labels.author}</dt><dd>{author}</dd></div>
+        <div><dt>{labels.published}</dt><dd>{dateFormat.format(published)}</dd></div>
+        <div><dt>{labels.reviewed}</dt><dd>{dateFormat.format(reviewed)}</dd></div>
+        <div><dt>{labels.certainty}</dt><dd>{certaintyLabels[lang][certainty as keyof typeof certaintyLabels.nl]}</dd></div>
+      </dl>
+    </header>
+    <div class="article-body"><slot /></div>
+    <footer class="article-note">
+      <strong>{labels.conflicts}:</strong> {conflicts}
+    </footer>
+  </article>
+</BaseLayout>
