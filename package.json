@@ -8,6 +8,7 @@
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "test": "node --test tests/*.test.mjs",
+    "translate:article": "node scripts/translate-article.mjs",
     "verify": "npm run check && npm run build && npm test"
   },
   "dependencies": {

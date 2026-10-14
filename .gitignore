@@ -1,14 +1,14 @@
-# project
-_site
+# generated and local
 dist
 .astro
 node_modules
-.sass-cache
-.vagrant
+.translation-cache
+.translation-drafts
+.env
+.env.*
+!.env.example
 
-# general
+# operating system
 .DS_Store
 Thumbs.db
 ehthumbs.db
-
-beautiful-jekyll-theme-*.gem

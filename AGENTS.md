@@ -1,9 +1,26 @@
-# Project instructions
+# Project context
 
-## Project-local skill
+## Mission
 
-For acupuncture topic selection, evidence retrieval, Nordon/PubMed research, medical claim review, English–Dutch localization, or publication-ready acupuncture content, read and follow:
+Build a static, evidence-oriented acupuncture education website for readers in the Netherlands. Dutch is the default language and English is the paired alternative. Consultation is an external entry point only, not an intake or treatment system.
 
-`skills/acupuncture-evidence-editor/SKILL.md`
+## Technical baseline
 
-Resolve all relative references from that skill's directory. This skill belongs to this repository and must not be installed globally or reused as an instruction source for unrelated projects.
+- Astro static output hosted on GitHub Pages.
+- Localized routes live under `/nl/` and `/en/`.
+- Published articles live in `src/content/articles/<lang>/` and are validated by `src/content.config.ts`.
+- Run `npm run verify` after behavior, content-schema, routing, or build changes.
+- Do not push, deploy, or publish drafts unless the user explicitly asks.
+
+## Load context by task
+
+- Website implementation: follow `src/AGENTS.md`.
+- Acupuncture articles or medical claims: follow `src/content/articles/AGENTS.md` and its routed project-local skill references.
+- Translation tooling: follow `scripts/AGENTS.md`.
+- Tests: follow `tests/AGENTS.md`.
+- Product decisions or ADRs: follow `docs/AGENTS.md`.
+- Static public files: follow `public/AGENTS.md`.
+- Project-local skills: follow `skills/AGENTS.md`.
+- Deployment workflow: follow `.github/AGENTS.md`.
+
+Do not preload every linked document. Read only the nearest scoped instructions and the references they route for the active task. The full map is in `docs/context-map.md`.

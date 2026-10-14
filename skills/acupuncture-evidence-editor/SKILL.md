@@ -24,6 +24,8 @@ For drafting, editing, translating, or reviewing a website article, also read [r
 
 For Astro content front matter, paired-language URLs, or publication acceptance checks, also read [references/content-contract.md](references/content-contract.md).
 
+For machine-assisted English/Dutch drafting, use the repository's `npm run translate:article` workflow documented in `docs/translation-workflow.md`. Treat its output as an unpublished draft and apply the bilingual editorial checks before moving it into `src/content/articles`.
+
 ## Required outcome
 
 For a research deliverable, report:
